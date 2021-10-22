@@ -1,0 +1,23 @@
+.Estilo1 {
+ color: #FFFFFF;
+ font-weight: bold;
+         }
+
+body,td,th 
+        {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 12px;
+        }
+
+
+input:hover
+        {
+          background-color:#FFFF99
+        }
+input
+        { 
+         background-color:#D7D7FF;
+         text-transform:uppercase;
+        }
+
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2do Ciclo Internacional de Conferencias Virtuales y Encuentro de CA</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./estilos.css">
+    <link rel="stylesheet" href="./contador.css">
+    <link rel="stylesheet" type="text/css" href="./seccion.css">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo">
+                <img src="./img/1-03.png" alt="">
+            </div>
+            <div class="navegacion">
+                <a href="index.html">Inicio</a>
+                <a href="ad.html">Acerca de</a>
+                <a href="convoca.html">Trabajos libres</a>
+                <a href="eventos.html">Eventos</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+        </nav>
+    </header>
+    
+   
+    <br>
+    <div class="texto"><center> Programa de eventos</center></div>
+
+
+      <div class="mytabs">
+
+
+
+    <input type="radio" id="tabfree" name="mytabs" checked="checked">
+    <label for="tabfree">22 y 23 de Noviembre</label>
+    <div class="tab">
+              <center><img src="./bn.png" width="800" height="250"></center>
+
+      <center><img src="./conferencias.png" width="800" height="1050"></center>
+      
+    </div>
+
+    
+
+    <input type="radio" id="tabgold" name="mytabs">
+    <label for="tabgold">24 de Noviembre</label>
+    <div class="tab">
+      <h2>26 de Noviembre</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+    <input type="radio" id="tab4" name="mytabs">
+    <label for="tab4">25 de Noviembre</label>
+    <div class="tab">
+      <h2>2 de Noviembre</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+
+    <input type="radio" id="tab5" name="mytabs">
+    <label for="tab5">26 de Noviembre</label>
+    <div class="tab">
+      <h2>26 de Noviembre</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+
+
+    <script src="./main.js"></script>
+</body>
+ <footer>
+  
+  <img src="./p1_1.png"  width="1519" >
+</footer> 
+</html>
+<style>
+  body {
+    
+    font-family: 'Roboto', sans-serif;
+}
+.mytabs {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 913px;
+    margin: 50px auto;
+    padding: 25px;
+}
+.mytabs input[type="radio"] {
+    display: none;
+}
+.mytabs label {
+    padding: 25px;
+    background: #2c6572;
+    font-weight: bold;
+}
+
+.mytabs .tab {
+    width: 100%;
+    padding: 20px;
+    background: #ededed;
+    order: 1;
+    display: none;
+}
+.mytabs .tab h2 {
+    font-size: 3em;
+}
+
+.mytabs input[type='radio']:checked + label + .tab {
+    display: block;
+}
+
+.mytabs input[type="radio"]:checked + label {
+    background: #eea120;
+}
+</style>
