@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div class="galeria">
+  <input type="radio" name="navegacion" id="_1" checked>
+  <input type="radio" name="navegacion" id="_2">
+  <input type="radio" name="navegacion" id="_3">
+  <input type="radio" name="navegacion" id="_4"> 
+  <img src="https://arcgisweb.agroasemex.gob.mx/portal/sharing/rest/content/items/0c920d53607e4def8731e00c47cd5957/data" width="1114" alt="Galeria CSS 1" />
+  <img src="" height="668" alt="Galeria CSS 2"  />
+  <img src="" height="668" alt="Galeria CSS 3" />
+  <img src="" height="668" alt="Galeria CSS 4" />
+</div>
+
+<style>
+	
+
+
+.galeria {
+  height: calc( 670px + 3em);
+  width: 1114px;
+  margin:1em auto;
+  border: 1px solid #555;
+  position: relative;  
+}
+
+.galeria img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 3s;
+}
+
+	
+.galeria input[type=radio] {
+  position: relative;
+  bottom: calc(-650px - 1.5em);
+  left: .5em;
+}
+
+.galeria input[type=radio]:nth-of-type(1):checked ~ img:nth-of-type(1) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(2):checked ~ img:nth-of-type(2) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(3):checked ~ img:nth-of-type(3) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(4):checked ~ img:nth-of-type(4) {
+  opacity: 1;
+}
+</style>
+
+</body>
+
+
+
+
+
+</html>
