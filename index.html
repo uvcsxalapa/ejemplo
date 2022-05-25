@@ -1,57 +1,70 @@
 <!DOCTYPE html>
-<html lang="es">
 <html>
 <head>
-<meta charset="utf-8">
-<title>galeria</title>
-
-<link rel="stylesheet" href="./fontello.css">
-    <link rel="stylesheet" href="./estilos.css">
-
-
-
-
+	<title></title>
 </head>
-
 <body>
 
 
 
 
 
+<div class="galeria">
+  <input type="radio" name="navegacion" id="_1" checked>
+  <input type="radio" name="navegacion" id="_2">
+  <input type="radio" name="navegacion" id="_3">
+  <input type="radio" name="navegacion" id="_4"> 
+  <img src="https://arcgisweb.agroasemex.gob.mx/portal/sharing/rest/content/items/0c920d53607e4def8731e00c47cd5957/data" width="1178" height="668" alt="Galeria CSS 1" />
+  <img src="" height="668" alt="Galeria CSS 2"  />
+  <img src="" height="668" alt="Galeria CSS 3" />
+  <img src="" height="668" alt="Galeria CSS 4" />
+</div>
 
- <div class="content-all">
-        <div class="content-img" id="img1">
-            <a href="#img5" class="icon-left-open"></a>
-            <img src="https://arcgisweb.agroasemex.gob.mx/portal/sharing/rest/content/items/08ebae638f8249958a40bb1e40725052/data">
-            <a href="#img2" class="icon-right-open"></a>
-           
-        </div>
-        <div class="content-img" id="img2">
-            <a href="#img1" class="icon-left-open"></a>
-            <img src="https://arcgisweb.agroasemex.gob.mx/portal/sharing/rest/content/items/0c920d53607e4def8731e00c47cd5957/data">
-            <a href="#img3" class="icon-right-open"></a>
-            
-        </div>
-        <div class="content-img" id="img3">
-            <a href="#img2" class="icon-left-open"></a>
-            <img src="img/3.jpg">
-            <a href="#img4" class="icon-right-open"></a>
-        </div>
-        <div class="content-img" id="img4">
-            <a href="#img3" class="icon-left-open"></a>
-            <img src="img/4.jpg">
-            <a href="#img5" class="icon-right-open"></a>
-        </div>
-        <div class="content-img" id="img5">
-            <a href="#img4" class="icon-left-open"></a>
-            <img src="img/5.jpg">
-            <a href="#img1" class="icon-right-open"></a>
-        </div>
-    </div>
-<br>
+
+<style>
+
+
+.galeria {
+  height: calc( 670px + 3em);
+  width: 1179px;
+  margin:1em auto;
+  border: 1px solid #555;
+  position: relative;  
+}
+
+.galeria img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 3s;
+}
+
+.galeria input[type=radio] {
+  position: relative;
+  bottom: calc(-650px - 1.5em);
+  left: .5em;
+}
+
+.galeria input[type=radio]:nth-of-type(1):checked ~ img:nth-of-type(1) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(2):checked ~ img:nth-of-type(2) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(3):checked ~ img:nth-of-type(3) {
+  opacity: 1;
+}
+
+.galeria input[type=radio]:nth-of-type(4):checked ~ img:nth-of-type(4) {
+  opacity: 1;
+}
+</style>
 
 </body>
+
 
 
 
