@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficas de Líneas Responsivas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: #f4f4f4;
+        }
+
+        canvas {
+            max-width: 45%;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="lineChartLeft"></canvas>
+<canvas id="lineChartRight"></canvas>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Datos para las gráficas - Izquierda
+        var dataDon = [988, 988, 993];
+        var dataFranklin = [989, 982, 975, 973, 971, 970, 962, 956, 942, 937, 937, 937, 937, 926, 926, 930, 935, 941, 941, 947, 947, 947, 953, 953, 956, 956, 961, 961, 961, 961, 965, 965, 965, 965, 970, 979, 983];
+        var dataIdalia = [981, 977, 976, 974, 972, 965, 960, 958, 958, 958, 945, 944, 941, 940, 942, 947, 949, 950, 957, 964, 971, 975, 978, 981, 984];
+        var dataLee = [991, 989, 989, 983, 953, 928, 926, 942, 942, 963, 963, 957, 958, 962, 958, 958, 954, 950, 950, 948, 948, 948, 948, 951, 951, 946, 946, 946, 946, 948, 948, 948, 952, 952, 951, 953, 953, 953, 955, 956, 957, 957, 956, 957, 957, 957, 962, 962, 965, 965, 965, 965, 965, 965, 965, 965, 968];
+        var dataMargot = [988, 984, 979, 975, 977, 975, 975, 970, 971, 972, 979, 978, 978, 982, 984];
+        var dataNigel = [984, 984, 982, 979, 979, 975, 974, 971, 971, 975, 973, 973, 977, 977, 977, 979];
+        var dataTammy = [992, 991, 991, 990, 992, 991, 991, 988, 988, 988, 989, 990, 992, 992, 992, 992, 992, 988, 993, 993, 993, 990, 987, 987, 987, 987, 976, 969, 965, 969, 973, 973];
+
+        // Datos para las gráficas - Derecha
+        var dataAdrian = [989, 986, 986, 982, 982, 980, 976, 973, 970, 970, 977, 983];
+        var dataBeatriz = [992, 992, 992, 992, 995];
+        var dataCalvin = [993, 990, 978, 970, 960, 955, 958, 968, 975, 975, 975, 982];
+        var dataDora = [994, 985, 977, 974, 956, 952, 955, 958, 950, 950, 952, 957, 964, 972, 968, 963, 955, 950, 942, 942, 948, 948, 950, 948, 953, 953, 953, 953, 953, 953, 953, 953, 953, 955, 946, 950, 961, 961, 961, 961, 965];
+        var dataFernanda = [995, 975, 959, 955, 955, 960, 967, 967, 971, 975, 987];
+        var dataHilary = [982, 980, 965, 960, 955, 952, 942, 942, 942, 939, 939, 948, 948, 948, 946, 943, 943, 947, 958, 959, 964, 968, 972, 974, 979];
+        var dataJova = [979, 972, 953, 929, 929, 932, 941, 951, 959, 972, 980, 987, 986];
+        var dataLidia = [983, 983, 977, 977, 971, 959, 950, 950, 942, 942, 965];
+        var dataNorma = [984, 975, 953, 950, 946, 941, 944, 944, 948, 948, 955, 958, 960, 963, 955, 955, 955, 955, 955, 958, 962, 968, 977, 978, 979];
+        var dataOtis = [985, 971, 960, 941, 927, 923, 923, 923, 923, 948, 965, 980];
+
+        // Configuración de la gráfica - Izquierda
+        var chartConfigLeft = {
+            type: "line",
+            data: {
+                labels: Array.from({ length: 57 }, (_, i) => i + 1),
+                datasets: [
+                    { label: "Don", data: dataDon, borderColor: "rgba(255, 0, 0, 1)", fill: false },
+                    { label: "Franklin", data: dataFranklin, borderColor: "rgba(0, 255, 0, 1)", fill: false },
+                    { label: "Idalia", data: dataIdalia, borderColor: "rgba(0, 0, 255, 1)", fill: false },
+                    { label: "Lee", data: dataLee, borderColor: "rgba(255, 255, 0, 1)", fill: false },
+                    { label: "Margot", data: dataMargot, borderColor: "rgba(255, 0, 255, 1)", fill: false },
+                    { label: "Nigel", data: dataNigel, borderColor: "rgba(0, 255, 255, 1)", fill: false },
+                    { label: "Tammy", data: dataTammy, borderColor: "rgba(128, 0, 0, 1)", fill: false }
+                ]
+            },
+            options: getChartOptions()
+        };
+
+        // Configuración de la gráfica - Derecha
+        var chartConfigRight = {
+            type: "line",
+            data: {
+                labels: Array.from({ length: 57 }, (_, i) => i + 1),
+                datasets: [
+                    { label: "Adrian", data: dataAdrian, borderColor: "rgba(255, 0, 0, 1)", fill: false },
+                    { label: "Beatriz", data: dataBeatriz, borderColor: "rgba(0, 255, 0, 1)", fill: false },
+                    { label: "Calvin", data: dataCalvin, borderColor: "rgba(0, 0, 255, 1)", fill: false },
+                    { label: "Dora", data: dataDora, borderColor: "rgba(255, 255, 0, 1)", fill: false },
+                    { label: "Fernanda", data: dataFernanda, borderColor: "rgba(255, 0, 255, 1)", fill: false },
+                    { label: "Hilary", data: dataHilary, borderColor: "rgba(0, 255, 255, 1)", fill: false },
+                    { label: "Jova", data: dataJova, borderColor: "rgba(128, 0, 0, 1)", fill: false },
+                    { label: "Lidia", data: dataLidia, borderColor: "rgba(0, 128, 0, 1)", fill: false },
+                    { label: "Norma", data: dataNorma, borderColor: "rgba(0, 0, 128, 1)", fill: false },
+                    { label: "Otis", data: dataOtis, borderColor: "rgba(128, 128, 0, 1)", fill: false }
+                ]
+            },
+            options: getChartOptions()
+        };
+
+        // Configuración general de la gráfica
+        function getChartOptions() {
+            return {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'top',
+                        ticks: {
+                            callback: function (value, index, values) {
+                                return value;
+                            }
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        reverse: true
+                    }
+                },
+                plugins: {
+                    annotation: {
+                        annotations: [{
+                            type: 'line',
+                            mode: 'vertical',
+                            scaleID: 'x',
+                            value: 1,
+                            borderColor: 'black',
+                            borderWidth: 1,
+                            label: {
+                                content: '1',
+                                enabled: true,
+                                position: 'top'
+                            }
+                        }]
+                    }
+                }
+            };
+        }
+
+        // Configuración de la primera gráfica
+        var ctxLeft = document.getElementById("lineChartLeft").getContext("2d");
+        var lineChartLeft = new Chart(ctxLeft, chartConfigLeft);
+
+        // Configuración de la segunda gráfica
+        var ctxRight = document.getElementById("lineChartRight").getContext("2d");
+        var lineChartRight = new Chart(ctxRight, chartConfigRight);
+    });
+</script>
+
+</body>
+</html>
