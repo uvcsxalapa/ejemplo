@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficas </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: #ffffff;
+        }
+
+        canvas {
+            max-width: 45%;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="lineChartLeft"></canvas>
+<canvas id="lineChartRight"></canvas>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Datos para las gráficas - Izquierda
+        var dataHilary = [982, 980, 965, 960, 955, 952, 942, 942, 942, 939, 939, 948, 948, 948, 946, 943, 943, 947, 958, 959, 964, 968, 972, 974, 979];
+        var dataLidia = [983, 983, 977, 977, 971, 959, 950, 950, 942, 942, 965];
+        var dataNorma = [984, 975, 953, 950, 946, 941, 944, 944, 948, 948, 955, 958, 960, 963, 955, 955, 955, 955, 955, 958, 962, 968, 977, 978, 979];
+        var dataOtis = [985, 971, 960, 941, 927, 923, 923, 923, 923, 948, 965, 980];
+        var dataBonoHilary =[935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935, 935];
+        var dataBonoLidia =[930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930];
+        var dataBonoNorma =[930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 930, 928, 928, 928, 928, 928, 928, 928, 928, 928, 928, 928, 928];
+        var dataBonoOtis =[937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937, 937];
+
+
+
+        // Datos para las gráficas - Derecha
+        var dataHilary2 = [120, 140, 165, 175, 195, 205, 220, 230, 230, 230, 230, 215, 215, 215, 215, 215, 215, 205, 185, 175, 155, 150, 140, 140, 130];
+        var dataLidia2 = [110, 110, 110, 120, 120, 140, 140, 155, 185, 205, 205, 220, 220, 165, 110];
+        var dataNorma2 = [130, 150, 195, 205, 215, 215, 205, 195, 195, 195, 185 ,185, 175 ,175, 195 ,195, 195 ,195, 195, 185, 175, 155 ,140, 130, 130, 110, 100, 100, 95, 95, 95, 95, 100, 100, 95, 75];
+        var dataOtis2 = [130, 175, 205, 230, 260, 270, 270 ,270, 270, 215, 175, 130];
+        var dataParametrico =[160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160];
+        
+
+        // Configuración de la gráfica - Izquierda
+        var chartConfigLeft = {
+            type: "line",
+            data: {
+                labels: Array.from({ length: 57 }, (_, i) => i + 1),
+                datasets: [
+                    { label: "Hilary", data: dataHilary, borderColor: "rgba(82, 1, 31, 1)", fill: false },
+                    { label: "Lidia", data: dataLidia, borderColor: "rgba(8, 63, 61, 1)", fill: false },
+                    { label: "Norma", data: dataNorma, borderColor: "rgba(112, 100, 18, 1)", fill: false },
+                    { label: "Otis", data: dataOtis, borderColor: "rgba(181, 112, 20, 1)", fill: false },
+                    { label: "Bono Hilary", data: dataBonoHilary, borderColor: "rgba(149, 42, 8, 1)", fill: false },
+                    { label: "Bono Lidia", data: dataBonoLidia, borderColor: "rgba(165, 188, 8, 1)", fill: false },
+                    { label: "Bono Norma", data: dataBonoNorma, borderColor: "rgba(79, 68, 73, 1)", fill: false },
+                    { label: "Bono Otis", data: dataBonoOtis, borderColor: "rgba(216, 43, 89, 1)", fill: false }
+        
+                    
+                ]
+            },
+            options: getChartOptionsInversa()
+        };
+
+        // Configuración de la gráfica - Derecha
+        var chartConfigRight = {
+            type: "line",
+            data: {
+                labels: Array.from({ length: 57 }, (_, i) => i + 1),
+                datasets: [
+                    { label: "Hilary", data: dataHilary2, borderColor: "rgba(82, 1, 31, 1)", fill: false },
+                    { label: "Lidia", data: dataLidia2, borderColor: "rgba(8, 63, 61, 1)", fill: false },
+                    { label: "Norma", data: dataNorma2, borderColor: "rgba(112, 100, 18, 1)", fill: false },
+                    { label: "Otis", data: dataOtis2, borderColor: "rgba(181, 112, 20, 1)", fill: false },
+                    { label: "Paramétrico", data: dataParametrico, borderColor: "rgba(149, 42, 8, 1)", fill: false }                    
+                ]
+            },
+            options: getChartOptions()
+        };
+
+        // Configuración general de la gráfica
+        function getChartOptions() {
+            return {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'bottom',
+                     
+                    }
+                },
+                plugins: {
+                    annotation: {
+                        annotations: [{
+                            type: 'line',
+                            mode: 'vertical',
+                            scaleID: 'x',
+                            value: 1,
+                            borderColor: 'black',
+                            borderWidth: 1,
+                            label: {
+                                content: '1',
+                                enabled: true,
+                                position: 'bottom'
+                            }
+                        }]
+                    }
+                }
+            };
+        }
+
+
+        function getChartOptionsInversa() {
+            return {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'top',
+                        ticks: {
+                            callback: function (value, index, values) {
+                                return value;
+                            }
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        reverse: true
+                    }
+                },
+                plugins: {
+                    annotation: {
+                        annotations: [{
+                            type: 'line',
+                            mode: 'vertical',
+                            scaleID: 'x',
+                            value: 1,
+                            borderColor: 'black',
+                            borderWidth: 1,
+                            label: {
+                                content: '1',
+                                enabled: true,
+                                position: 'top'
+                            }
+                        }]
+                    }
+                }
+            };
+        }
+
+        // Configuración de la primera gráfica
+        var ctxLeft = document.getElementById("lineChartLeft").getContext("2d");
+        var lineChartLeft = new Chart(ctxLeft, chartConfigLeft);
+
+        // Configuración de la segunda gráfica
+        var ctxRight = document.getElementById("lineChartRight").getContext("2d");
+        var lineChartRight = new Chart(ctxRight, chartConfigRight);
+    });
+</script>
+
+</body>
+</html>
