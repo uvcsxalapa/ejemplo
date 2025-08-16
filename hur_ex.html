@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjetas con Ventanas Emergentes</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet">
+  <style>
+    body {
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: "Roboto", sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px; /* Espacio entre tarjetas */
+    }
+
+    .blog-card {
+      width: 175px;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    }
+
+    /* Fondos */
+    .blog-card.salud {
+      background: url(https://arcgisweb.agroasemex.gob.mx/portal/sharing/rest/content/items/0f004a3c520549c9b86d0ebd98e248ba/data) no-repeat center/cover;
+    }
+    .blog-card.hidro {
+      background: url(https://arcgisweb.agroasemex.gob.mx/portal/sharing/rest/content/items/82b14726bc9d40c59c861678bc5b298c/data) no-repeat center/cover;
+    }
+    .blog-card.carretero {
+      background: url(https://arcgisweb.agroasemex.gob.mx/portal/sharing/rest/content/items/e95cb4006e5e4d3f8c3e3777bc149035/data) no-repeat center/cover;
+    }
+
+    .blog-card .color-overlay {
+      background: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+    }
+
+    .title-content {
+      text-align: center;
+      margin-top: 15px;
+      position: absolute;
+      z-index: 20;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    hr {
+      width: 30px;
+      height: 2px;
+      margin: 6px auto;
+      border: 0;
+      background: #D0BB57;
+    }
+
+    .intro {
+      font-size: 9px;
+      font-style: italic;
+      color: #DCE3E7;
+    }
+
+    .card-info {
+      width: 100%;
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      padding: 0 8px;
+      color: #DCE3E7;
+      font-size: 9px;
+      line-height: 12px;
+      z-index: 20;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .blog-card:hover .card-info {
+      opacity: 1;
+      bottom: 70px;
+    }
+
+    .button {
+      background: #D0BB57;
+      border: none;
+      padding: 6px 12px;
+      color: #fff;
+      font-size: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+
+    .utility-info {
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      z-index: 20;
+    }
+
+    .utility-list {
+      list-style-type: none;
+      margin: 0 0 5px 5px;
+      padding: 0;
+    }
+
+    .utility-list li {
+      font-size: 8px;
+      color: #DCE3E7;
+    }
+
+    /* Estilo Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 400px;
+      text-align: justify-all;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="container">
+    <!-- Tarjeta 1 -->
+    <div class="blog-card carretero" onclick="openModal('modal')">
+      <div class="title-content">
+        <h3>CARRETERO</h3>
+        <hr />
+        <div class="intro">Bienes asegurados</div>
+      </div>
+      <div class="card-info">
+        Recursos.<br><br>
+        <button class="button">Haz clic</button>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li>Última versión 12/2024</li>
+        </ul>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+
+
+
+  <div class="container">
+    <!-- Tarjeta 1 -->
+    <div class="blog-card carretero" onclick="openModal('modal0')">
+      <div class="title-content">
+        <h3>CARRETERO</h3>
+        <hr />
+        <div class="intro">Bienes asegurados</div>
+      </div>
+      <div class="card-info">
+        Recursos.<br><br>
+        <button class="button">Haz clic</button>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li>Última versión 12/2024</li>
+        </ul>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+
+
+ <div class="container">
+    <!-- Tarjeta 1 -->
+    <div class="blog-card carretero" onclick="openModal('modal')">
+      <div class="title-content">
+        <h3>CARRETERO</h3>
+        <hr />
+        <div class="intro">Bienes asegurados</div>
+      </div>
+      <div class="card-info">
+        Recursos.<br><br>
+        <button class="button">Haz clic</button>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li>Última versión 12/2024</li>
+        </ul>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+
+
+
+  <div class="container">
+    <!-- Tarjeta 1 -->
+    <div class="blog-card carretero" onclick="openModal('modal0')">
+      <div class="title-content">
+        <h3>CARRETERO</h3>
+        <hr />
+        <div class="intro">Bienes asegurados</div>
+      </div>
+      <div class="card-info">
+        Recursos.<br><br>
+        <button class="button">Haz clic</button>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li>Última versión 12/2024</li>
+        </ul>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="container">
+    <!-- Tarjeta 1 -->
+    <div class="blog-card carretero" onclick="openModal('modal1')">
+      <div class="title-content">
+        <h3>CARRETERO</h3>
+        <hr />
+        <div class="intro">Bienes asegurados</div>
+      </div>
+      <div class="card-info">
+        Recursos.<br><br>
+        <button class="button">Haz clic</button>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li>Última versión 12/2024</li>
+        </ul>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="blog-card salud" onclick="openModal('modal2')">
+      <div class="title-content">
+        <h3>SALUD</h3>
+        <hr />
+        <div class="intro">Bienes asegurados</div>
+      </div>
+      <div class="card-info">
+        Recursos.<br><br>
+        <button class="button">Haz clic</button>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li>Última versión 12/2024</li>
+        </ul>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+
+    <!-- Tarjeta 3 -->
+    <div class="blog-card hidro" onclick="openModal('modal3')">
+      <div class="title-content">
+        <h3>HIDRÁULICO</h3>
+        <hr />
+        <div class="intro">Bienes asegurados</div>
+      </div>
+      <div class="card-info">
+        Recursos.<br><br>
+        <button class="button">Haz clic</button>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li>Última versión 12/2024</li>
+        </ul>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+  </div>
+
+
+
+<!-- Modal 1 -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal')">&times;</span>
+      <p><strong>Sector 1:</strong><br>
+        Carreteras, puentes, túneles y distribuidores que estén bajo control del Gobierno.
+      </p>
+      <button class="button" onclick="alert('Acción en Sector Carretero')">Ver más</button>
+    </div>
+  </div>
+
+
+  <!-- Modal 1 -->
+  <div id="modal0" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal0')">&times;</span>
+      <p><strong>Sector 2:</strong><br>
+        Carreteras, puentes, túneles y distribuidores que estén bajo control del Gobierno.
+      </p>
+      <button class="button" onclick="alert('Acción en Sector Carretero')">Ver más</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- Modal 1 -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <p><strong>Sector Carretero:</strong><br>
+        Carreteras, puentes, túneles y distribuidores que estén bajo control del Gobierno.
+      </p>
+      <button class="button" onclick="alert('Acción en Sector Carretero')">Ver más</button>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <p><strong>Sector Salud:</strong><br>
+        Instituciones de salud y sus contenidos bajo control del Gobierno Federal, estatal y municipal.
+      </p>
+      <button class="button" onclick="alert('Acción en Sector Salud')">Ver más</button>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <p><strong>Sector Hidráulico:</strong><br>
+        Obras de captación, conducción y distribución de agua, alcantarillado y drenaje.
+      </p>
+      <button class="button" onclick="alert('Acción en Sector Hidráulico')">Ver más</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    window.onclick = function(event) {
+      const modals = document.getElementsByClassName('modal');
+      for (let modal of modals) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
